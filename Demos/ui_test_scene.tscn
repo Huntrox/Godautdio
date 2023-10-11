@@ -1,15 +1,15 @@
 [gd_scene load_steps=6 format=3 uid="uid://cddmbporhylbu"]
 
-[ext_resource type="Script" path="res://addons/Godautdio/Examples/godautdio_ui_example.gd" id="1_3lmjh"]
-[ext_resource type="Script" path="res://addons/Godautdio/Examples/extended_button.gd" id="1_cortt"]
-[ext_resource type="Script" path="res://addons/Godautdio/Scripts/AudioRef.gd" id="2_j2wyf"]
+[ext_resource type="Script" path="res://Demos/godautdio_ui_example.gd" id="1_ili3t"]
+[ext_resource type="Script" path="res://addons/Godautdio/Scripts/AudioRef.gd" id="2_8hxy2"]
+[ext_resource type="Script" path="res://Demos/extended_button.gd" id="3_iek6g"]
 
 [sub_resource type="Resource" id="Resource_j60p7"]
-script = ExtResource("2_j2wyf")
+script = ExtResource("2_8hxy2")
 clip_path = "sfx/hit"
 
 [sub_resource type="Resource" id="Resource_7o5ql"]
-script = ExtResource("2_j2wyf")
+script = ExtResource("2_8hxy2")
 clip_path = "test"
 
 [node name="Control" type="Control"]
@@ -19,7 +19,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("1_3lmjh")
+script = ExtResource("1_ili3t")
 test_audio = SubResource("Resource_j60p7")
 
 [node name="Button" type="Button" parent="."]
@@ -36,7 +36,7 @@ offset_bottom = 16.0
 grow_horizontal = 2
 grow_vertical = 2
 text = "BIG BUTTON"
-script = ExtResource("1_cortt")
+script = ExtResource("3_iek6g")
 ui_click = SubResource("Resource_7o5ql")
 
 [node name="Button2" type="Button" parent="."]
