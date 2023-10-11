@@ -1,0 +1,32 @@
+[gd_scene load_steps=3 format=3 uid="uid://ha8apgd2oe2e"]
+
+[ext_resource type="Script" path="res://addons/Godautdio/editor/audio_picker_menu.gd" id="1_s57u0"]
+[ext_resource type="Texture2D" uid="uid://bm6bgqchll4ug" path="res://addons/Godautdio/icons/icon_search.svg" id="2_qxl31"]
+
+[node name="SelectClipMenu" type="PopupPanel"]
+size = Vector2i(256, 384)
+visible = true
+script = ExtResource("1_s57u0")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+offset_left = 4.0
+offset_top = 4.0
+offset_right = 252.0
+offset_bottom = 380.0
+
+[node name="Label" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+text = "Sound Picker"
+horizontal_alignment = 1
+
+[node name="SearchFilterInput" type="LineEdit" parent="VBoxContainer"]
+layout_mode = 2
+placeholder_text = "search"
+right_icon = ExtResource("2_qxl31")
+
+[node name="Tree" type="Tree" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[connection signal="text_changed" from="VBoxContainer/SearchFilterInput" to="." method="_on_search_filter_input_text_changed"]
+[connection signal="item_selected" from="VBoxContainer/Tree" to="." method="_on_tree_item_selected"]

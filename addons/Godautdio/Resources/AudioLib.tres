@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="AudioLibrary" load_steps=2 format=3 uid="uid://5x81rup7jnh4"]
+
+[ext_resource type="Script" path="res://addons/Godautdio/Scripts/AudioLibrary.gd" id="5_ufj0o"]
+
+[resource]
+script = ExtResource("5_ufj0o")
+audio_clips = Array[Resource("res://addons/Godautdio/Scripts/AudioClip.gd")]([])
+audio_files_format = Array[String](["mp3", "wav", "ogg"])
+clips_dict = {}

@@ -1,0 +1,30 @@
+[gd_scene load_steps=3 format=3 uid="uid://dhg2omrujdjv0"]
+
+[ext_resource type="Texture2D" uid="uid://yps710b0ao6a" path="res://addons/audio_manager/icons/icon_play.svg" id="1_rlcmg"]
+[ext_resource type="Texture2D" uid="uid://bm6bgqchll4ug" path="res://addons/audio_manager/icons/icon_search.svg" id="2_7jc7i"]
+
+[node name="audio_ref_property" type="BoxContainer"]
+anchors_preset = -1
+anchor_right = 0.262153
+offset_right = 164.0
+offset_bottom = 28.0
+alignment = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="HBoxContainer" type="HFlowContainer" parent="."]
+layout_mode = 2
+size_flags_horizontal = 3
+alignment = 2
+
+[node name="srchBtn" type="Button" parent="HBoxContainer"]
+custom_minimum_size = Vector2(0, 28)
+layout_mode = 2
+size_flags_horizontal = 3
+icon = ExtResource("2_7jc7i")
+alignment = 0
+icon_alignment = 2
+
+[node name="plyBtn" type="Button" parent="."]
+layout_mode = 2
+size_flags_horizontal = 4
+icon = ExtResource("1_rlcmg")

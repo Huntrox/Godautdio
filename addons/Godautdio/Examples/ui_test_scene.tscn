@@ -1,0 +1,75 @@
+[gd_scene load_steps=6 format=3 uid="uid://cddmbporhylbu"]
+
+[ext_resource type="Script" path="res://addons/Godautdio/Examples/godautdio_ui_example.gd" id="1_3lmjh"]
+[ext_resource type="Script" path="res://addons/Godautdio/Examples/extended_button.gd" id="1_cortt"]
+[ext_resource type="Script" path="res://addons/Godautdio/Scripts/AudioRef.gd" id="2_j2wyf"]
+
+[sub_resource type="Resource" id="Resource_j60p7"]
+script = ExtResource("2_j2wyf")
+clip_path = "sfx/hit"
+
+[sub_resource type="Resource" id="Resource_7o5ql"]
+script = ExtResource("2_j2wyf")
+clip_path = "test"
+
+[node name="Control" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_3lmjh")
+test_audio = SubResource("Resource_j60p7")
+
+[node name="Button" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -64.0
+offset_top = -15.0
+offset_right = 64.0
+offset_bottom = 16.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "BIG BUTTON"
+script = ExtResource("1_cortt")
+ui_click = SubResource("Resource_7o5ql")
+
+[node name="Button2" type="Button" parent="."]
+layout_mode = 1
+offset_right = 128.0
+offset_bottom = 31.0
+text = "Log"
+
+[node name="Button3" type="Button" parent="."]
+layout_mode = 1
+offset_top = 80.0
+offset_right = 128.0
+offset_bottom = 111.0
+text = "Test Audio"
+
+[node name="Button4" type="Button" parent="."]
+layout_mode = 1
+offset_top = 119.0
+offset_right = 128.0
+offset_bottom = 150.0
+text = "Print Test Audio"
+
+[node name="Button5" type="Button" parent="."]
+layout_mode = 1
+offset_top = 158.0
+offset_right = 132.0
+offset_bottom = 189.0
+text = "Clear all"
+
+[connection signal="mouse_entered" from="Button" to="Button" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="Button" to="Button" method="_on_mouse_exited"]
+[connection signal="pressed" from="Button" to="Button" method="_on_pressed"]
+[connection signal="pressed" from="Button2" to="." method="_on_print_current"]
+[connection signal="pressed" from="Button3" to="." method="_on_test_audio"]
+[connection signal="pressed" from="Button4" to="." method="_on_test_audio_print"]
+[connection signal="pressed" from="Button5" to="." method="clear_audio"]

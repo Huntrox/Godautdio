@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://delpbfaoqckcl"]
+
+[ext_resource type="Script" path="res://addons/Godautdio/Scripts/AudioInstance3D.gd" id="1_mmt25"]
+
+[node name="AudioInstance3D" type="AudioStreamPlayer3D"]
+script = ExtResource("1_mmt25")
