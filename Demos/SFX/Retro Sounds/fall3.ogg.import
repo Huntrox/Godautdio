@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://7d08faqu4j5m"
+path="res://.godot/imported/fall3.ogg-389a578b27055676f9e19e3f2818ddcf.oggvorbisstr"
+
+[deps]
+
+source_file="res://Demos/SFX/Retro Sounds/fall3.ogg"
+dest_files=["res://.godot/imported/fall3.ogg-389a578b27055676f9e19e3f2818ddcf.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

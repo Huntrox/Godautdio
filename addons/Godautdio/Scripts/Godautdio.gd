@@ -129,6 +129,11 @@ func play_at_location(ref:AudioRef,target_position:Vector3)->RefResult:
 
 	
 func _play_instance(ref:AudioRef,parent:Node,free_on_finish:bool,result:RefResult):
+#	if not ref:
+#
+#		return null
+#	if ref.clip_path.is_empty():
+#		return null
 	var instance
 	if audio_library.clips_dict.has(ref.clip_path):
 		var clip:AudioClip = audio_library.clips_dict[ref.clip_path]
@@ -150,6 +155,7 @@ func _play_instance(ref:AudioRef,parent:Node,free_on_finish:bool,result:RefResul
 		schedule_clip(ref.clip_path,result)
 	else:
 		result.stream_state = StreamState.NotFound
+		GodautdioUtils.log_warn("{0} Was not found on Audio Library".format({"0":str(ref.clip_path)}))
 	return instance
 	
 	
@@ -315,13 +321,13 @@ class RefResult:
 	@export var instance_id:String
 	@export var stream_state:StreamState
 	
-	func set_loops(loops:int):
+	func set_loops(loops:int)->RefResult:
 		Godautdio.set_clip_loops(instance_id,loops)
 		return self
-	func set_delay(dalay:float):
+	func set_delay(dalay:float)->RefResult:
 		Godautdio.set_clip_delay(instance_id,dalay,self)
 		GodautdioUtils.log("Delay Set To: " + str(dalay) + " For: "+ str(instance_id))
 		return self
-	func stop():
+	func stop()->RefResult:
 		Godautdio.stop_ref(instance_id)
 		return self

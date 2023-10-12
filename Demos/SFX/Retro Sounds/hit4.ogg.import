@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://d42ht5mpujv7"
+path="res://.godot/imported/hit4.ogg-6bd0bf45c01d628010310506e35fa8bd.oggvorbisstr"
+
+[deps]
+
+source_file="res://Demos/SFX/Retro Sounds/hit4.ogg"
+dest_files=["res://.godot/imported/hit4.ogg-6bd0bf45c01d628010310506e35fa8bd.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

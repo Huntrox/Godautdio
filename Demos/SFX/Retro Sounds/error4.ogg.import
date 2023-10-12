@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://tixpp5xrxc87"
+path="res://.godot/imported/error4.ogg-dae3519dda3e9fd68e5dc764a984a99e.oggvorbisstr"
+
+[deps]
+
+source_file="res://Demos/SFX/Retro Sounds/error4.ogg"
+dest_files=["res://.godot/imported/error4.ogg-dae3519dda3e9fd68e5dc764a984a99e.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

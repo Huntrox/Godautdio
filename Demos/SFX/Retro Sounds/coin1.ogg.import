@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://64u01mhi4r3d"
+path="res://.godot/imported/coin1.ogg-5dc618816319a59dad8b0fef2a577cb1.oggvorbisstr"
+
+[deps]
+
+source_file="res://Demos/SFX/Retro Sounds/coin1.ogg"
+dest_files=["res://.godot/imported/coin1.ogg-5dc618816319a59dad8b0fef2a577cb1.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

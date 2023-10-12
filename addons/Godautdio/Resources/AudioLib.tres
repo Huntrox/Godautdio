@@ -1,9 +1,147 @@
-[gd_resource type="Resource" script_class="AudioLibrary" load_steps=2 format=3 uid="uid://5x81rup7jnh4"]
+[gd_resource type="Resource" script_class="AudioLibrary" load_steps=24 format=3 uid="uid://5x81rup7jnh4"]
 
+[ext_resource type="AudioStream" uid="uid://bv00d0kyb7mn1" path="res://Demos/SFX/UI Audio/click1.ogg" id="1_yo5j2"]
+[ext_resource type="Script" path="res://addons/Godautdio/Scripts/ClipParams.gd" id="2_6riq0"]
+[ext_resource type="Script" path="res://addons/Godautdio/Scripts/AudioClip.gd" id="3_k3d00"]
+[ext_resource type="AudioStream" uid="uid://dq8c0unu7ap2y" path="res://Demos/SFX/UI Audio/rollover3.ogg" id="4_ajske"]
+[ext_resource type="AudioStream" uid="uid://cdsywobk0uffq" path="res://Demos/SFX/UI Audio/rollover5.ogg" id="5_ryqgs"]
 [ext_resource type="Script" path="res://addons/Godautdio/Scripts/AudioLibrary.gd" id="5_ufj0o"]
+[ext_resource type="AudioStream" uid="uid://b88hb5qdbihok" path="res://Demos/SFX/Mission Plausible.ogg" id="6_gn633"]
+[ext_resource type="AudioStream" uid="uid://bknwx4ncwpxl3" path="res://Demos/SFX/time_over.ogg" id="7_sobug"]
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_cc5tg"]
+streams_count = 1
+random_pitch = 1.0
+random_volume_offset_db = 0.0
+stream_0/stream = ExtResource("1_yo5j2")
+stream_0/weight = 1.0
+
+[sub_resource type="Resource" id="Resource_bwhq3"]
+script = ExtResource("2_6riq0")
+looping = false
+volume_db = 0.0
+pitch_scale = 1.0
+delay = 0.0
+max_distance2D = 2000.0
+max_distance3D = 0.0
+
+[sub_resource type="Resource" id="Resource_c120e"]
+script = ExtResource("3_k3d00")
+clip_path = "UI/Btn/Click"
+clip_stream = SubResource("AudioStreamRandomizer_cc5tg")
+stream_type = 0
+bus_index = 3
+clip_space_type = 0
+params = SubResource("Resource_bwhq3")
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_7sqkc"]
+streams_count = 1
+random_pitch = 1.0
+random_volume_offset_db = 0.0
+stream_0/stream = ExtResource("4_ajske")
+stream_0/weight = 1.0
+
+[sub_resource type="Resource" id="Resource_wnslm"]
+script = ExtResource("2_6riq0")
+looping = false
+volume_db = 0.0
+pitch_scale = 1.0
+delay = 0.0
+max_distance2D = 2000.0
+max_distance3D = 0.0
+
+[sub_resource type="Resource" id="Resource_f658j"]
+script = ExtResource("3_k3d00")
+clip_path = "UI/Btn/HoverEnter"
+clip_stream = SubResource("AudioStreamRandomizer_7sqkc")
+stream_type = 0
+bus_index = 3
+clip_space_type = 0
+params = SubResource("Resource_wnslm")
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_uwiwv"]
+streams_count = 1
+random_pitch = 1.0
+random_volume_offset_db = 0.0
+stream_0/stream = ExtResource("5_ryqgs")
+stream_0/weight = 1.0
+
+[sub_resource type="Resource" id="Resource_nnfyi"]
+script = ExtResource("2_6riq0")
+looping = false
+volume_db = 0.0
+pitch_scale = 2.2
+delay = 0.0
+max_distance2D = 2000.0
+max_distance3D = 0.0
+
+[sub_resource type="Resource" id="Resource_pacif"]
+script = ExtResource("3_k3d00")
+clip_path = "UI/Btn/HoverExit"
+clip_stream = SubResource("AudioStreamRandomizer_uwiwv")
+stream_type = 0
+bus_index = 3
+clip_space_type = 0
+params = SubResource("Resource_nnfyi")
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_3rmkm"]
+streams_count = 1
+random_pitch = 1.0
+random_volume_offset_db = 0.0
+stream_0/stream = ExtResource("6_gn633")
+stream_0/weight = 1.0
+
+[sub_resource type="Resource" id="Resource_hfqrs"]
+script = ExtResource("2_6riq0")
+looping = false
+volume_db = 0.0
+pitch_scale = 1.0
+delay = 0.0
+max_distance2D = 2000.0
+max_distance3D = 0.0
+
+[sub_resource type="Resource" id="Resource_613tu"]
+script = ExtResource("3_k3d00")
+clip_path = "UI/Music/loop_1"
+clip_stream = SubResource("AudioStreamRandomizer_3rmkm")
+stream_type = 0
+bus_index = 3
+clip_space_type = 0
+params = SubResource("Resource_hfqrs")
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_r6hq0"]
+streams_count = 1
+random_pitch = 1.0
+random_volume_offset_db = 0.0
+stream_0/stream = ExtResource("7_sobug")
+stream_0/weight = 1.0
+
+[sub_resource type="Resource" id="Resource_vierm"]
+script = ExtResource("2_6riq0")
+looping = false
+volume_db = 0.0
+pitch_scale = 1.0
+delay = 0.0
+max_distance2D = 2000.0
+max_distance3D = 0.0
+
+[sub_resource type="Resource" id="Resource_dp2v1"]
+script = ExtResource("3_k3d00")
+clip_path = "UI/time_over"
+clip_stream = SubResource("AudioStreamRandomizer_r6hq0")
+stream_type = 0
+bus_index = 3
+clip_space_type = 0
+params = SubResource("Resource_vierm")
 
 [resource]
 script = ExtResource("5_ufj0o")
-audio_clips = Array[Resource("res://addons/Godautdio/Scripts/AudioClip.gd")]([])
+audio_clips = Array[ExtResource("3_k3d00")]([SubResource("Resource_c120e"), SubResource("Resource_f658j"), SubResource("Resource_pacif"), SubResource("Resource_613tu"), SubResource("Resource_dp2v1")])
 audio_files_format = Array[String](["mp3", "wav", "ogg"])
-clips_dict = {}
+clips_dict = {
+"UI/Btn/Click": SubResource("Resource_c120e"),
+"UI/Btn/HoverEnter": SubResource("Resource_f658j"),
+"UI/Btn/HoverExit": SubResource("Resource_pacif"),
+"UI/Music/loop_1": SubResource("Resource_613tu"),
+"UI/time_over": SubResource("Resource_dp2v1")
+}

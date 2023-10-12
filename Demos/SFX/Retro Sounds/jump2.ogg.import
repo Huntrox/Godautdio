@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://op7or5c41rac"
+path="res://.godot/imported/jump2.ogg-13db263094d365135140231f70fb8fa3.oggvorbisstr"
+
+[deps]
+
+source_file="res://Demos/SFX/Retro Sounds/jump2.ogg"
+dest_files=["res://.godot/imported/jump2.ogg-13db263094d365135140231f70fb8fa3.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

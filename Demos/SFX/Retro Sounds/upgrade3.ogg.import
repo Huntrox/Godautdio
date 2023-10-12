@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://cq1yrktk6dcts"
+path="res://.godot/imported/upgrade3.ogg-9ca4d14fddaf70c0ef6e4f9fe21c0a2c.oggvorbisstr"
+
+[deps]
+
+source_file="res://Demos/SFX/Retro Sounds/upgrade3.ogg"
+dest_files=["res://.godot/imported/upgrade3.ogg-9ca4d14fddaf70c0ef6e4f9fe21c0a2c.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4
