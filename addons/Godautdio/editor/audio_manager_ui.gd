@@ -143,11 +143,11 @@ func _on_tab_changed(index:int)->void:
 func _on_clip_type_changed(index:int)->void:
 	match index:
 		0:
-			selectedClip.clip_space_type = AudioClip.ClipSpaceType.Is2DSpace
-		1:
-			selectedClip.clip_space_type = AudioClip.ClipSpaceType.Is3DSpace
-		2:
 			selectedClip.clip_space_type = AudioClip.ClipSpaceType.NonePositional
+		1:
+			selectedClip.clip_space_type = AudioClip.ClipSpaceType.Is2DSpace
+		2:
+			selectedClip.clip_space_type = AudioClip.ClipSpaceType.Is3DSpace
 
 
 func _on_stream_type_change(value:int)->void:

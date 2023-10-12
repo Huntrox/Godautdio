@@ -141,7 +141,7 @@ bus_index = 3
 clip_space_type = 0
 params = SubResource("Resource_vierm")
 
-[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_8725b"]
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_fku0b"]
 streams_count = 7
 random_pitch = 1.3
 random_volume_offset_db = 3.0
@@ -160,7 +160,7 @@ stream_5/weight = 1.0
 stream_6/stream = ExtResource("14_jdmo4")
 stream_6/weight = 1.0
 
-[sub_resource type="Resource" id="Resource_xkq2e"]
+[sub_resource type="Resource" id="Resource_0gme6"]
 script = ExtResource("2_6riq0")
 looping = false
 volume_db = 0.0
@@ -169,21 +169,21 @@ delay = 0.0
 max_distance2D = 2000.0
 max_distance3D = 0.0
 
-[sub_resource type="Resource" id="Resource_x8cg8"]
+[sub_resource type="Resource" id="Resource_51144"]
 script = ExtResource("3_k3d00")
 clip_path = "Player/Footsteps"
-clip_stream = SubResource("AudioStreamRandomizer_8725b")
+clip_stream = SubResource("AudioStreamRandomizer_fku0b")
 stream_type = 1
 bus_index = 3
-clip_space_type = 0
-params = SubResource("Resource_xkq2e")
+clip_space_type = 2
+params = SubResource("Resource_0gme6")
 
 [resource]
 script = ExtResource("5_ufj0o")
-audio_clips = Array[ExtResource("3_k3d00")]([SubResource("Resource_c120e"), SubResource("Resource_f658j"), SubResource("Resource_pacif"), SubResource("Resource_613tu"), SubResource("Resource_dp2v1"), SubResource("Resource_x8cg8")])
+audio_clips = Array[ExtResource("3_k3d00")]([SubResource("Resource_c120e"), SubResource("Resource_f658j"), SubResource("Resource_pacif"), SubResource("Resource_613tu"), SubResource("Resource_dp2v1"), SubResource("Resource_51144")])
 audio_files_format = Array[String](["mp3", "wav", "ogg"])
 clips_dict = {
-"Player/Footsteps": SubResource("Resource_x8cg8"),
+"Player/Footsteps": SubResource("Resource_51144"),
 "UI/Btn/Click": SubResource("Resource_c120e"),
 "UI/Btn/HoverEnter": SubResource("Resource_f658j"),
 "UI/Btn/HoverExit": SubResource("Resource_pacif"),
