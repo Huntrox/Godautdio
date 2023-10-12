@@ -2,7 +2,6 @@ extends Control
 
 @export var audio_clip:AudioRef
 
-
 var clip_loops:int = 0
 var clip_delay:float = 0
 var clip_path:String = "UI/time_over"
