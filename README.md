@@ -14,7 +14,8 @@ Godautdio is a simple audio management plugin for the Godot game engine, designe
 ## How To Use
 
 ![how to 1](./images/godautdio-readme_1.png)
-![how to 1](./images/godautdio-readme_2.png)
+![how to 1](./images/godautdio-readme_3.png)
+![how to 3](./images/godautdio-readme_2.png)
 
 # API
 
