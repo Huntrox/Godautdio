@@ -21,8 +21,8 @@ func stop():
 func play_at_location(position:Vector3)->Godautdio.RefResult:
 	return Godautdio.play_at_location(self,position)
 	
-func play_one_shot()->Godautdio.RefResult:
-	return Godautdio.play_one_shot(self)
+func play_one_shot(parent:Node = null)->Godautdio.RefResult:
+	return Godautdio.play_one_shot(self,parent)
 
 func is_playing()->bool:
 	return Godautdio.is_playing(self)
