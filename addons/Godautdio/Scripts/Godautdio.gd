@@ -34,7 +34,7 @@ func reload_db():
 
 
 ###--## EDITOR ##--###
-func editor_clip_preivew(clip:AudioClip):
+func editor_clip_preivew(clip:AudioClip)->void:
 	if not Engine.is_editor_hint() or clip == null or clip.clip_stream.streams_count <= 0:
 		return
 	var instance = setup_editor_instance(clip)
@@ -42,13 +42,21 @@ func editor_clip_preivew(clip:AudioClip):
 			await get_tree().create_timer(clip.params.delay).timeout
 	instance.play()
 	
-func editor_preivew(ref:AudioRef):
+func editor_preivew(ref:AudioRef)->void:
 	if not Engine.is_editor_hint():
 		return
 	reload_db()
 	if audio_library.clips_dict.has(ref.clip_path):
 		var clip:AudioClip = audio_library.clips_dict[ref.clip_path]
 		editor_clip_preivew(clip)
+
+func editor_stream_preivew(stream:AudioStream)->void:
+	if not Engine.is_editor_hint():
+		return
+	editor_audio_instance.set_stream(stream)
+	editor_audio_instance.volume_db = 0
+	editor_audio_instance.pitch_scale = 1
+	editor_audio_instance.play()
 
 func setup_editor_instance(clip:AudioClip)-> AudioInstance:
 	stop_editor_preivew()

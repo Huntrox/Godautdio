@@ -1,9 +1,10 @@
-[gd_scene load_steps=6 format=3 uid="uid://dtm4ykqtxxoxh"]
+[gd_scene load_steps=7 format=3 uid="uid://dtm4ykqtxxoxh"]
 
 [ext_resource type="Script" path="res://addons/Godautdio/editor/stream_field.gd" id="1_px43p"]
 [ext_resource type="Texture2D" uid="uid://8pcby52mufua" path="res://addons/Godautdio/icons/AudioStream.svg" id="2_mqqsk"]
 [ext_resource type="Texture2D" uid="uid://bm6bgqchll4ug" path="res://addons/Godautdio/icons/icon_search.svg" id="3_pbq54"]
 [ext_resource type="Script" path="res://addons/Godautdio/editor/drop_assign_button.gd" id="4_y74ps"]
+[ext_resource type="Texture2D" uid="uid://yps710b0ao6a" path="res://addons/Godautdio/icons/icon_play.svg" id="5_7xhud"]
 [ext_resource type="Texture2D" uid="uid://drqq4rv2ymr7a" path="res://addons/Godautdio/icons/Remove.svg" id="5_jqkin"]
 
 [node name="StreamField" type="HFlowContainer" node_paths=PackedStringArray("weight_slider", "weight_input", "path_input")]
@@ -38,6 +39,10 @@ icon = ExtResource("3_pbq54")
 icon_alignment = 2
 script = ExtResource("4_y74ps")
 filter = Array[String](["mp3", "wave", "ogg"])
+
+[node name="plyBtn" type="Button" parent="VBoxContainer/HFlowContainer"]
+layout_mode = 2
+icon = ExtResource("5_7xhud")
 
 [node name="deleteBtn" type="Button" parent="VBoxContainer/HFlowContainer"]
 layout_mode = 2
@@ -79,6 +84,7 @@ size_flags_horizontal = 8
 [connection signal="on_file_dropped" from="VBoxContainer/HFlowContainer/clipFilePathLineEdit" to="." method="on_drop_file"]
 [connection signal="on_file_dropped" from="VBoxContainer/HFlowContainer/openFileButton" to="." method="on_drop_file"]
 [connection signal="pressed" from="VBoxContainer/HFlowContainer/openFileButton" to="." method="on_assign_btn"]
+[connection signal="pressed" from="VBoxContainer/HFlowContainer/plyBtn" to="." method="on_preview_stream"]
 [connection signal="pressed" from="VBoxContainer/HFlowContainer/deleteBtn" to="." method="on_delete_element"]
 [connection signal="value_changed" from="VBoxContainer/HFlowContainer2/WeightSlider" to="." method="on_weight_slider_changed"]
 [connection signal="value_changed" from="VBoxContainer/HFlowContainer2/WeightInput" to="." method="on_weight_input_changed"]

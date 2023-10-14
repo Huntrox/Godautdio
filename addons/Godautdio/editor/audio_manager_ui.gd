@@ -187,6 +187,11 @@ func on_stream_file_dropped(index:int , file:String)->void:
 			else:
 				selectedClip.clip_stream.set_stream(index,stream_file)
 
+func on_stream_preview(index:int)->void:
+	if selectedClip.clip_stream.streams_count < index or not selectedClip.clip_stream.get_stream(index):
+		return
+	Godautdio.editor_stream_preivew(selectedClip.clip_stream.get_stream(index))
+	
 
 func on_stream_element_deleted(index:int)->void:
 	if index == 0 and selectedClip.clip_stream.streams_count == 1:

@@ -57,6 +57,10 @@ func on_drop_file(file:String):
 	if ui_manager:
 		ui_manager.on_stream_file_dropped(stream_index,file)
 	set_stream(file)
+
+func on_preview_stream():
+	if ui_manager:
+		ui_manager.on_stream_preview(stream_index)
 		
 func on_delete_element():
 	if path_input:

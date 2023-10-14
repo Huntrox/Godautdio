@@ -263,6 +263,10 @@ icon_alignment = 2
 script = ExtResource("8_taplv")
 filter = Array[String](["mp3", "wave", "ogg"])
 
+[node name="plyBtn" type="Button" parent="BoxContainer/SoundContainer/AudioSettingRect/MarginContainer/VBoxContainer/clipFieldContainer/header/SingleStreamField"]
+layout_mode = 2
+icon = ExtResource("10_6u20j")
+
 [node name="deleteBtn" type="Button" parent="BoxContainer/SoundContainer/AudioSettingRect/MarginContainer/VBoxContainer/clipFieldContainer/header/SingleStreamField"]
 layout_mode = 2
 icon = ExtResource("9_cctdh")
@@ -806,6 +810,7 @@ initial_position = 2
 [connection signal="on_file_dropped" from="BoxContainer/SoundContainer/AudioSettingRect/MarginContainer/VBoxContainer/clipFieldContainer/header/SingleStreamField/clipFilePathLineEdit" to="BoxContainer/SoundContainer/AudioSettingRect/MarginContainer/VBoxContainer/clipFieldContainer/header/SingleStreamField" method="on_drop_file"]
 [connection signal="on_file_dropped" from="BoxContainer/SoundContainer/AudioSettingRect/MarginContainer/VBoxContainer/clipFieldContainer/header/SingleStreamField/openFileButton" to="BoxContainer/SoundContainer/AudioSettingRect/MarginContainer/VBoxContainer/clipFieldContainer/header/SingleStreamField" method="on_drop_file"]
 [connection signal="pressed" from="BoxContainer/SoundContainer/AudioSettingRect/MarginContainer/VBoxContainer/clipFieldContainer/header/SingleStreamField/openFileButton" to="BoxContainer/SoundContainer/AudioSettingRect/MarginContainer/VBoxContainer/clipFieldContainer/header/SingleStreamField" method="on_assign_btn"]
+[connection signal="pressed" from="BoxContainer/SoundContainer/AudioSettingRect/MarginContainer/VBoxContainer/clipFieldContainer/header/SingleStreamField/plyBtn" to="BoxContainer/SoundContainer/AudioSettingRect/MarginContainer/VBoxContainer/clipFieldContainer/header/SingleStreamField" method="on_preview_stream"]
 [connection signal="pressed" from="BoxContainer/SoundContainer/AudioSettingRect/MarginContainer/VBoxContainer/clipFieldContainer/header/SingleStreamField/deleteBtn" to="BoxContainer/SoundContainer/AudioSettingRect/MarginContainer/VBoxContainer/clipFieldContainer/header/SingleStreamField" method="on_delete_element"]
 [connection signal="on_file_dropped" from="BoxContainer/SoundContainer/AudioSettingRect/MarginContainer/VBoxContainer/clipFieldContainer/StreamsArrayContainer/StreamsScrollContainer/PanelContainer/MarginContainer/StreamsGridContainer" to="." method="on_multi_file_dropped"]
 [connection signal="on_file_dropped" from="BoxContainer/SoundContainer/AudioSettingRect/MarginContainer/VBoxContainer/clipFieldContainer/StreamsArrayContainer/AddStreamBtn" to="." method="on_multi_file_dropped"]
