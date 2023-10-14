@@ -147,10 +147,12 @@ func _play_instance(ref:AudioRef,parent:Node,free_on_finish:bool,result:RefResul
 					result.stream_state = StreamState.Finished
 				_on_finish_setup(clip,free_on_finish,instance)
 			)
+		if not ref.last_play:
+			ref = ref.duplicate()
+		ref.last_play = result
 		result.audio_instance = instance
 		result.instance_id = instance.instance_id
 		ref.instance_id = instance.instance_id
-		ref.last_play = result
 		currently_playing[instance.instance_id][AUDIO_REFERENCE] = ref
 		schedule_clip(ref.clip_path,result)
 	else:
