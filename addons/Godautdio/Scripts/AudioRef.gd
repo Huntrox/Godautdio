@@ -24,6 +24,9 @@ func play_at_location(position:Vector3)->Godautdio.RefResult:
 func play_one_shot(parent:Node = null)->Godautdio.RefResult:
 	return Godautdio.play_one_shot(self,parent)
 
+func play_one_shot_at_loc(position:Vector3)->Godautdio.RefResult:
+	return Godautdio.play_one_shot(self,null,position)
+
 func is_playing()->bool:
 	return Godautdio.is_playing(self)
 

@@ -107,11 +107,14 @@ func play(ref:AudioRef,parent:Node = null,free_on_finish:bool = true)-> RefResul
 	return result
 
 
-func play_one_shot(ref:AudioRef,parent:Node = null)-> RefResult:
+func play_one_shot(ref:AudioRef,parent:Node = null,target_position:Vector3 = Vector3.ZERO)-> RefResult:
 	var result = RefResult.new()
 	if audio_library.clips_dict.has(ref.clip_path):
 		var clip:AudioClip = audio_library.clips_dict[ref.clip_path]
 		var instance = create_new_instance(clip,parent if parent else self)
+		if target_position != Vector3.ZERO:
+			var space = clip.clip_space_type
+			instance = set_instance_position(target_position,space,instance)
 		instance.finished.connect(func(): _on_finish_setup(clip,true,instance))
 		result.audio_instance = instance
 		result.instance_id = instance.instance_id
@@ -127,12 +130,7 @@ func play_at_location(ref:AudioRef,target_position:Vector3)->RefResult:
 
 	if not result.stream_state == StreamState.NotFound:
 		var space = audio_library.clips_dict[ref.clip_path].clip_space_type
-		match space:
-			AudioClip.ClipSpaceType.Is2DSpace:
-				instance.global_position = position_2d
-			AudioClip.ClipSpaceType.Is3DSpace:
-				instance.global_position = target_position
-				
+		instance = set_instance_position(target_position,space,instance)
 	return result
 
 	
@@ -323,7 +321,14 @@ func setup_audio_instance(clip:AudioClip,instance):
 	instance.bus = AudioServer.get_bus_name(clip.bus_index)
 	return instance
 
-
+func set_instance_position(target_position:Vector3,space:AudioClip.ClipSpaceType,instance):
+	var position_2d = Vector2(target_position.x,target_position.y)
+	match space:
+		AudioClip.ClipSpaceType.Is2DSpace:
+			instance.global_position = position_2d
+		AudioClip.ClipSpaceType.Is3DSpace:
+			instance.global_position = target_position
+	return instance
 
 enum StreamState {Queued,Puased,Playing,Finished,Stopped,NotFound}
 class RefResult:
