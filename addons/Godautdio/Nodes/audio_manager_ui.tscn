@@ -336,18 +336,21 @@ multiple_files = true
 custom_minimum_size = Vector2(0, 10)
 layout_mode = 2
 
-[node name="ClipSettingsTitleContainer" type="HFlowContainer" parent="BoxContainer/SoundContainer/AudioSettingRect/MarginContainer/VBoxContainer"]
+[node name="ClipSettingsTitleContainer" type="MarginContainer" parent="BoxContainer/SoundContainer/AudioSettingRect/MarginContainer/VBoxContainer"]
 layout_mode = 2
+
+[node name="ColorRect" type="ColorRect" parent="BoxContainer/SoundContainer/AudioSettingRect/MarginContainer/VBoxContainer/ClipSettingsTitleContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+color = Color(0, 0, 0, 0.352941)
 
 [node name="Label" type="Label" parent="BoxContainer/SoundContainer/AudioSettingRect/MarginContainer/VBoxContainer/ClipSettingsTitleContainer"]
 custom_minimum_size = Vector2(128, 0)
 layout_mode = 2
 text = "Clip Settings"
 label_settings = SubResource("LabelSettings_qktnc")
-
-[node name="Control" type="Control" parent="BoxContainer/SoundContainer/AudioSettingRect/MarginContainer/VBoxContainer/ClipSettingsTitleContainer"]
-layout_mode = 2
-size_flags_horizontal = 3
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="more" type="HFlowContainer" parent="BoxContainer/SoundContainer/AudioSettingRect/MarginContainer/VBoxContainer"]
 layout_mode = 2
@@ -517,8 +520,13 @@ step = 0.1
 value = 1.0
 custom_arrow_step = 1.0
 
-[node name="StreamPlayerSettingsTitle" type="HFlowContainer" parent="BoxContainer/SoundContainer/AudioSettingRect/MarginContainer/VBoxContainer"]
+[node name="StreamPlayerSettingsTitle" type="MarginContainer" parent="BoxContainer/SoundContainer/AudioSettingRect/MarginContainer/VBoxContainer"]
 layout_mode = 2
+
+[node name="ColorRect" type="ColorRect" parent="BoxContainer/SoundContainer/AudioSettingRect/MarginContainer/VBoxContainer/StreamPlayerSettingsTitle"]
+layout_mode = 2
+size_flags_horizontal = 3
+color = Color(0, 0, 0, 0.352941)
 
 [node name="Label" type="Label" parent="BoxContainer/SoundContainer/AudioSettingRect/MarginContainer/VBoxContainer/StreamPlayerSettingsTitle"]
 custom_minimum_size = Vector2(128, 0)
@@ -526,6 +534,8 @@ layout_mode = 2
 size_flags_horizontal = 3
 text = "StreamPlayer Settings"
 label_settings = SubResource("LabelSettings_qktnc")
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="VBoxContainer" type="VBoxContainer" parent="BoxContainer/SoundContainer/AudioSettingRect/MarginContainer/VBoxContainer"]
 layout_mode = 2
@@ -545,6 +555,7 @@ size_flags_horizontal = 3
 color = Color(0, 0, 0, 0.352941)
 
 [node name="Label" type="Label" parent="BoxContainer/SoundContainer/AudioSettingRect/MarginContainer/VBoxContainer/VBoxContainer/VolumeContainer/header"]
+visible = false
 custom_minimum_size = Vector2(128, 0)
 layout_mode = 2
 text = "Volume"
@@ -599,6 +610,7 @@ size_flags_horizontal = 3
 color = Color(0, 0, 0, 0.352941)
 
 [node name="Label" type="Label" parent="BoxContainer/SoundContainer/AudioSettingRect/MarginContainer/VBoxContainer/VBoxContainer/PitchContainer/header"]
+visible = false
 custom_minimum_size = Vector2(128, 0)
 layout_mode = 2
 text = "Pitch"
@@ -652,6 +664,7 @@ size_flags_horizontal = 3
 color = Color(0, 0, 0, 0.352941)
 
 [node name="Label" type="Label" parent="BoxContainer/SoundContainer/AudioSettingRect/MarginContainer/VBoxContainer/VBoxContainer/MaxDisranceContainer/header"]
+visible = false
 custom_minimum_size = Vector2(128, 0)
 layout_mode = 2
 text = "Max Distance"
