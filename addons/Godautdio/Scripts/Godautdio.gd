@@ -11,8 +11,7 @@ const CLIP_DELAY:String  = "clip_delay"
 
 
 var audio_instance = preload("res://addons/Godautdio/Nodes/audio_instance.tscn")
-var audio_instance2d = preload("res://addons/Godautdio/Nodes/audio_instance_2d.tscn")
-var audio_instance3d = preload("res://addons/Godautdio/Nodes/audio_instance_3d.tscn")
+
 var audio_library:AudioLibrary
 
 
@@ -134,13 +133,13 @@ func play_at_location(ref:AudioRef,target_position:Vector3)->RefResult:
 	return result
 
 	
-func _play_instance(ref:AudioRef,parent:Node,free_on_finish:bool,result:RefResult):
+func _play_instance(ref:AudioRef,parent:Node,free_on_finish:bool,result:RefResult)->AudioInstance:
 #	if not ref:
 #
 #		return null
 #	if ref.clip_path.is_empty():
 #		return null
-	var instance
+	var instance:AudioInstance
 	if audio_library.clips_dict.has(ref.clip_path):
 		var clip:AudioClip = audio_library.clips_dict[ref.clip_path]
 		if not result.instance_id.is_empty() and currently_playing.has(result.instance_id):
@@ -240,7 +239,7 @@ func set_clip_delay(instance_id:String,delay:float,result:RefResult)->void:
 		schedule_clip(clip_path,result)
 
 
-func on_instance_finish(instance)->void:
+func on_instance_finish(instance:AudioInstance)->void:
 	GodautdioUtils.log("Finished: "+ str(instance.instance_id))
 	_log_current()
 	if currently_playing.has(instance.instance_id):
@@ -255,7 +254,7 @@ func _log_current():
 	GodautdioUtils.log(currently_playing)
 
 
-func _on_finish_setup(clip:AudioClip,free_on_finish:bool,instance)->void:
+func _on_finish_setup(clip:AudioClip,free_on_finish:bool,instance:AudioInstance)->void:
 	#infinite looping
 	if currently_playing[instance.instance_id][CLIP_LOOPS]  == -1:
 		instance.play()
@@ -284,15 +283,25 @@ func set_bus_volume(volume:float,bus_name:String)->void:
 	var bus_index = AudioServer.get_bus_index(bus_name)
 	AudioServer.set_bus_volume_db(bus_index,value)
 	
-func create_new_instance(clip:AudioClip,parent:Node):
-	var instance
+func create_new_instance(clip:AudioClip,parent:Node)->AudioInstance:
+	
+	var script = load("res://addons/Godautdio/Scripts/AudioInstance.gd")
+	var instance:AudioInstance
+	
 	match clip.clip_space_type:
-		AudioClip.ClipSpaceType.Is2DSpace:
-			instance = audio_instance2d.instantiate() as AudioInstance2D
-		AudioClip.ClipSpaceType.Is3DSpace:
-			instance = audio_instance3d.instantiate() as AudioInstance3D
 		AudioClip.ClipSpaceType.NonePositional:
-			instance = audio_instance.instantiate() as AudioInstance
+			var stream_player = AudioStreamPlayer.new()
+			stream_player.set_script(script)
+			instance = stream_player as AudioInstance
+		AudioClip.ClipSpaceType.Is2DSpace:
+			var stream_player_2d = AudioStreamPlayer2D.new()
+			stream_player_2d.set_script(script)
+			instance = stream_player_2d as AudioInstance
+		AudioClip.ClipSpaceType.Is3DSpace:
+			var stream_player_3d = AudioStreamPlayer3D.new()
+			stream_player_3d.set_script(script)
+			instance = stream_player_3d as AudioInstance
+			
 	instance = setup_audio_instance(clip,instance)
 	
 	currently_playing[instance.instance_id] = {}
@@ -305,8 +314,9 @@ func create_new_instance(clip:AudioClip,parent:Node):
 	return instance
 
 
-func setup_audio_instance(clip:AudioClip,instance):
+func setup_audio_instance(clip:AudioClip,instance:AudioInstance)->AudioInstance:
 	var id = GodautdioUtils.generate_id()
+	
 	match clip.clip_space_type:
 		AudioClip.ClipSpaceType.Is2DSpace:
 			instance.max_distance = clip.params.max_distance2D
@@ -316,12 +326,15 @@ func setup_audio_instance(clip:AudioClip,instance):
 #		AudioClip.ClipSpaceType.NonePositional:
 
 	var stream = clip.clip_stream
-	instance.setup_instance(stream,clip.params)
+	
+	instance.set_stream(stream)
+	instance.volume_db = clip.params.volume_db
+	instance.pitch_scale = clip.params.pitch_scale
 	instance.instance_id = id
 	instance.bus = AudioServer.get_bus_name(clip.bus_index)
 	return instance
 
-func set_instance_position(target_position:Vector3,space:AudioClip.ClipSpaceType,instance):
+func set_instance_position(target_position:Vector3,space:AudioClip.ClipSpaceType,instance:AudioInstance)->AudioInstance:
 	var position_2d = Vector2(target_position.x,target_position.y)
 	match space:
 		AudioClip.ClipSpaceType.Is2DSpace:

@@ -3,7 +3,7 @@ class_name AudioRef
 
 @export var clip_path:String 
 
-var one_shot:bool
+
 var last_play:Godautdio.RefResult
 var instance_id:String
 

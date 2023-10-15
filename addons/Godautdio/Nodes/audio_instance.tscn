@@ -1,6 +1,13 @@
-[gd_scene load_steps=2 format=3 uid="uid://dstb2x0u21s4j"]
+[gd_scene load_steps=3 format=3 uid="uid://dstb2x0u21s4j"]
 
 [ext_resource type="Script" path="res://addons/Godautdio/Scripts/AudioInstance.gd" id="1_4e2oo"]
 
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_22a7y"]
+
 [node name="AudioInstance" type="AudioStreamPlayer"]
 script = ExtResource("1_4e2oo")
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="."]
+stream = SubResource("AudioStreamRandomizer_22a7y")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
