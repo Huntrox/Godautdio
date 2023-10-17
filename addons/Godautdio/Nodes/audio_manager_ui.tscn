@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://c4io6ac6oqyj2"]
+[gd_scene load_steps=20 format=3 uid="uid://c4io6ac6oqyj2"]
 
 [ext_resource type="Script" path="res://addons/Godautdio/editor/audio_manager_ui.gd" id="1_iv8mh"]
 [ext_resource type="Texture2D" uid="uid://d13fnmd0yv0yi" path="res://addons/Godautdio/icons/Add.svg" id="2_668bn"]
@@ -8,6 +8,7 @@
 [ext_resource type="Script" path="res://addons/Godautdio/editor/stream_field.gd" id="6_i22yr"]
 [ext_resource type="Texture2D" uid="uid://8pcby52mufua" path="res://addons/Godautdio/icons/AudioStream.svg" id="7_ire4e"]
 [ext_resource type="Script" path="res://addons/Godautdio/editor/drop_assign_button.gd" id="8_taplv"]
+[ext_resource type="PackedScene" uid="uid://2xsu7tvigsmr" path="res://addons/Godautdio/Nodes/vu_meter.tscn" id="8_u0k2f"]
 [ext_resource type="Texture2D" uid="uid://dw3irg0cmmsda" path="res://addons/Godautdio/icons/Clear.svg" id="9_cctdh"]
 [ext_resource type="Texture2D" uid="uid://yps710b0ao6a" path="res://addons/Godautdio/icons/icon_play.svg" id="10_6u20j"]
 [ext_resource type="Texture2D" uid="uid://cfdr6x3h1bwn4" path="res://addons/Godautdio/icons/icon_stop.svg" id="11_7vnvi"]
@@ -92,6 +93,11 @@ tab_1/disabled = true
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_stretch_ratio = 0.5
+
+[node name="VuMeter" parent="BoxContainer/header/container" instance=ExtResource("8_u0k2f")]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 4
 
 [node name="PlyBtn" type="Button" parent="BoxContainer/header/container"]
 layout_mode = 2

@@ -19,6 +19,7 @@ var currently_playing = {}
 
 var editor_audio_instance:AudioInstance
 
+
 func _init():
 	if Engine.is_editor_hint():
 		editor_audio_instance = audio_instance.instantiate()
@@ -40,6 +41,7 @@ func editor_clip_preivew(clip:AudioClip)->void:
 	if clip.params.delay > 0:
 			await get_tree().create_timer(clip.params.delay).timeout
 	instance.play()
+
 	
 func editor_preivew(ref:AudioRef)->void:
 	if not Engine.is_editor_hint():

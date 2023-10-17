@@ -119,7 +119,7 @@ func _ready():
 	max_dis_3d_box.value_changed.connect(func(value): selectedClip.params.max_distance3D = value)
 
 	
-	
+	AudioServer
 	refresh_view()
 	preview_clip(AudioClip.new())
 	
