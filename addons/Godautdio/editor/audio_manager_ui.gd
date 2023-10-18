@@ -73,6 +73,7 @@ var selectedClip:AudioClip
 var search_filter:String
 var clips_dict:Dictionary = {}
 var current_filter:String = ""
+var confirmation_callback:Callable
 
 func _ready():
 	sounds_tree.item_selected.connect(_on_item_selected)
@@ -352,13 +353,14 @@ func save(force:bool = false)-> bool:
 	return true
 
 func _on_delete_btn_pressed()->void:
+	show_confirmation_dialog("Delete","Warning: Deleting items will permanently remove data.\nAre you sure you want to proceed?",_on_element_delete_confirmed)
+	
+
+func _on_element_delete_confirmed():
 	clips_dict.erase(selectedClip.clip_path)
 	save(true)
 	refresh_view()
 	preview_clip(AudioClip.new())
-	
-
-
 
 func _on_sound_clips_tree_item_mouse_selected(click_position, mouse_button_index):
 	GodautdioUtils.log("pressed: {0} at {1}".format({"0":mouse_button_index,"1":click_position}))
@@ -384,18 +386,28 @@ func _on_stp_btn_pressed():
 
 
 
-func _on_clear_all_pressed():
+func show_confirmation_dialog(title:String , msg:String,callback:Callable):
 	var mouse_pos = get_global_mouse_position()
-	confirmation_dialog.title = "CLEAR ALL"
-	confirmation_dialog.dialog_text ="Warning: Deleting all items will permanently remove all data.\nAre you sure you want to proceed?"
+	confirmation_callback = callback
+	confirmation_dialog.title = title
+	confirmation_dialog.dialog_text = msg
 	confirmation_dialog.ok_button_text = "YES"
 	confirmation_dialog.cancel_button_text = "NO"
 #	confirmation_dialog.position = mouse_pos
 	confirmation_dialog.show()
-	
-	
 
 
+
+func _on_clear_all_pressed():
+	show_confirmation_dialog("CLEAR ALL","Warning: Deleting all items will permanently remove all data.\nAre you sure you want to proceed?",_on_clear_all_confiremd)
+
+
+
+func on_confirmation_confirmed():
+	if not confirmation_callback:
+		return
+	confirmation_callback.call()
+	confirmation_callback = func(): return
 
 func _on_clear_all_confiremd():
 	clips_container.audio_clips = []
