@@ -691,13 +691,13 @@ layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 1
 min_value = -80.0
-max_value = 80.0
+max_value = 24.0
 scrollable = false
 
 [node name="maxVolBox" type="SpinBox" parent="BoxContainer/SoundContainer/AudioSettingRect/MarginContainer/VBoxContainer/VBoxContainer/VolumeContainer/Content/HFlowContainer2"]
 layout_mode = 2
 min_value = -80.0
-max_value = 80.0
+max_value = 24.0
 step = 0.1
 suffix = "dB"
 custom_arrow_step = 1.0
@@ -920,6 +920,7 @@ file_mode = 0
 filters = PackedStringArray("*.mp3", "*.wave", "*.ogg")
 
 [node name="contextMenu" type="PopupMenu" parent="."]
+always_on_top = true
 
 [node name="warningPopup" type="AcceptDialog" parent="."]
 title = "Warning!"

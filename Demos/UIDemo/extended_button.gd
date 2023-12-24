@@ -1,10 +1,6 @@
 extends Button
 
 @export var ui_click:AudioRef
-
-
-
-
 @export var ui_enter:AudioRef
 @export var ui_exit:AudioRef
 

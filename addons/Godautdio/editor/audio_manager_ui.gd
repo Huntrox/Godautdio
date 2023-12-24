@@ -366,15 +366,15 @@ func _on_sound_clips_tree_item_mouse_selected(click_position, mouse_button_index
 	GodautdioUtils.log("pressed: {0} at {1}".format({"0":mouse_button_index,"1":click_position}))
 	if not mouse_button_index == 2:
 		return
-
+	
 	context_menu.clear()
-	context_menu.position = click_position
 	context_menu.add_item("YES")
 	context_menu.add_separator()
 	context_menu.add_item("Delete")
 	context_menu.reset_size()
-	
+	context_menu.position = get_global_mouse_position()
 	context_menu.show()
+#	context_menu.reparent(context_menu.get_parent().get_tree().root)
 	GodautdioUtils.log(context_menu.position)
 
 

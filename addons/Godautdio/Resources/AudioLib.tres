@@ -11,8 +11,6 @@
 
 [sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_cc5tg"]
 streams_count = 1
-random_pitch = 1.0
-random_volume_offset_db = 0.0
 stream_0/stream = ExtResource("1_yo5j2")
 stream_0/weight = 1.0
 
@@ -36,8 +34,6 @@ params = SubResource("Resource_bwhq3")
 
 [sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_7sqkc"]
 streams_count = 1
-random_pitch = 1.0
-random_volume_offset_db = 0.0
 stream_0/stream = ExtResource("4_ajske")
 stream_0/weight = 1.0
 
@@ -61,8 +57,6 @@ params = SubResource("Resource_wnslm")
 
 [sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_uwiwv"]
 streams_count = 1
-random_pitch = 1.0
-random_volume_offset_db = 0.0
 stream_0/stream = ExtResource("5_ryqgs")
 stream_0/weight = 1.0
 
@@ -86,8 +80,6 @@ params = SubResource("Resource_nnfyi")
 
 [sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_3rmkm"]
 streams_count = 1
-random_pitch = 1.0
-random_volume_offset_db = 0.0
 stream_0/stream = ExtResource("6_gn633")
 stream_0/weight = 1.0
 
@@ -111,8 +103,6 @@ params = SubResource("Resource_hfqrs")
 
 [sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_r6hq0"]
 streams_count = 1
-random_pitch = 1.0
-random_volume_offset_db = 0.0
 stream_0/stream = ExtResource("7_sobug")
 stream_0/weight = 1.0
 

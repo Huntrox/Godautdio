@@ -1,7 +1,6 @@
 @tool
 extends Node
 
-
 const STREAM_PLAYER_INSTANCE:String = "stream_player_instance" #Assigned Stream player Instance
 const AUDIO_REFERENCE:String = "audio_reference"			   #AudioRef Currently Playing
 const CURRENT_CLIP_ID:String  = "current_clip_id"
@@ -30,10 +29,7 @@ func _init():
 func reload_db():
 	audio_library = preload("res://addons/Godautdio/Resources/AudioLib.tres")
 	
-
-
-
-###--## EDITOR ##--###
+#region EDITOR
 func editor_clip_preivew(clip:AudioClip)->void:
 	if not Engine.is_editor_hint() or clip == null or clip.clip_stream.streams_count <= 0:
 		return
@@ -71,7 +67,7 @@ func stop_editor_preivew()->void:
 	if editor_audio_instance.playing:
 		editor_audio_instance.stop()
 		
-##########################################################################
+#endregion #########################################################################
 
 
 
@@ -248,14 +244,20 @@ func on_instance_finish(instance:AudioInstance)->void:
 		currently_playing.erase(instance.instance_id)
 	_log_current()
 
+func set_instance_position(target_position:Vector3,space:AudioClip.ClipSpaceType,instance:AudioInstance)->AudioInstance:
+	var position_2d = Vector2(target_position.x,target_position.y)
+	match space:
+		AudioClip.ClipSpaceType.Is2DSpace:
+			instance.global_position = position_2d
+		AudioClip.ClipSpaceType.Is3DSpace:
+			instance.global_position = target_position
+	return instance
 
 
-
-####__$$_### HELPERS ###_$$__####
+#region HELPERS
 func _log_current():
 	GodautdioUtils.log(currently_playing)
-
-
+	
 func _on_finish_setup(clip:AudioClip,free_on_finish:bool,instance:AudioInstance)->void:
 	#infinite looping
 	if currently_playing[instance.instance_id][CLIP_LOOPS]  == -1:
@@ -336,18 +338,11 @@ func setup_audio_instance(clip:AudioClip,instance:AudioInstance)->AudioInstance:
 	instance.bus = AudioServer.get_bus_name(clip.bus_index)
 	return instance
 
-func set_instance_position(target_position:Vector3,space:AudioClip.ClipSpaceType,instance:AudioInstance)->AudioInstance:
-	var position_2d = Vector2(target_position.x,target_position.y)
-	match space:
-		AudioClip.ClipSpaceType.Is2DSpace:
-			instance.global_position = position_2d
-		AudioClip.ClipSpaceType.Is3DSpace:
-			instance.global_position = target_position
-	return instance
 
+#endregion 
 enum StreamState {Queued,Puased,Playing,Finished,Stopped,NotFound}
 class RefResult:
-	@export var audio_instance:Node
+	var audio_instance:Node
 	@export var instance_id:String
 	@export var stream_state:StreamState
 	

@@ -64,6 +64,7 @@ size_flags_vertical = 3
 layout_mode = 2
 size_flags_horizontal = 3
 tooltip_text = "Probability weight"
+mouse_filter = 1
 text = "Weight"
 
 [node name="WeightSlider" type="HSlider" parent="VBoxContainer/HFlowContainer2"]
