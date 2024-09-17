@@ -260,12 +260,19 @@ func _log_current()->void:
 	
 func _on_finish_setup(clip:AudioClip,free_on_finish:bool,instance:AudioInstance)->void:
 	#infinite looping
+	var is_loop_play:bool = false
 	if currently_playing[instance.instance_id][CLIP_LOOPS]  == -1:
-		instance.play()
-		return
+		is_loop_play = true
 	#loops count
 	if currently_playing[instance.instance_id][CLIP_LOOPS] > 0:
 		currently_playing[instance.instance_id][CLIP_LOOPS] -= 1
+		is_loop_play = true
+		
+	if is_loop_play:
+		var delay = currently_playing[instance.instance_id][CLIP_DELAY]
+		if delay > 0:
+			await get_tree().create_timer(delay).timeout
+		print(delay)
 		instance.play()
 		return
 	if free_on_finish :
