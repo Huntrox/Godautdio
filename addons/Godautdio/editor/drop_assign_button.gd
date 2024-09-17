@@ -34,6 +34,7 @@ func _can_drop_data(position: Vector2, data) -> bool:
 	return all_files_valid
 
 
-func _get_drag_data(position:Vector2):
 
-	pass
+#func _get_drag_data(position:Vector2)->Variant:
+	#return 
+	#pass

@@ -11,12 +11,17 @@ config_version=5
 [application]
 
 config/name="Godautdio"
-config/features=PackedStringArray("4.2", "Forward Plus")
+config/tags=PackedStringArray("addon")
+config/features=PackedStringArray("4.3", "Forward Plus")
 config/icon="res://icon.svg"
 
 [autoload]
 
 Godautdio="*res://addons/Godautdio/Scripts/Godautdio.gd"
+
+[debug]
+
+gdscript/warnings/untyped_declaration=2
 
 [editor_plugins]
 

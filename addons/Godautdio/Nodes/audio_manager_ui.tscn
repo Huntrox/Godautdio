@@ -172,8 +172,8 @@ right_icon = ExtResource("5_d12tt")
 layout_mode = 2
 size_flags_vertical = 3
 mouse_default_cursor_shape = 2
-theme_override_constants/h_separation = 10
 theme_override_constants/v_separation = 0
+theme_override_constants/h_separation = 10
 allow_rmb_select = true
 hide_root = true
 
@@ -245,10 +245,9 @@ tooltip_text = "Stream mode
 	one single stream to be played.
 ● RANDOM STREAM
 	one random stream from list of streams  will be played based on playback mode"
-item_count = 2
 selected = 0
+item_count = 2
 popup/item_0/text = "Single Stream"
-popup/item_0/id = 0
 popup/item_1/text = "Random Stream"
 popup/item_1/id = 1
 
@@ -350,10 +349,9 @@ Play streams in the order they appear in the stream pool.
 
 If only 1 sound is present in the pool, the same sound will always play.
 "
-item_count = 3
 selected = 0
+item_count = 3
 popup/item_0/text = "Random (Avoid Repeats)"
-popup/item_0/id = 0
 popup/item_1/text = "Random"
 popup/item_1/id = 1
 popup/item_2/text = "Sequential"
@@ -491,10 +489,9 @@ size_flags_horizontal = 3
 tooltip_text = "The bus on which this audio is playing.
 
 Note: This displays list of bus names from default bus layout"
-item_count = 4
 selected = 0
+item_count = 4
 popup/item_0/text = "Master"
-popup/item_0/id = 0
 popup/item_1/text = "Music"
 popup/item_1/id = 1
 popup/item_2/text = "SFX"
@@ -535,14 +532,14 @@ tooltip_text = "AudioStreamPlayer Space
 	Plays positional sound in 2D space.
 ● 3D SPACE
 	Plays positional sound in 3D space."
-item_count = 3
 selected = 0
+item_count = 3
 popup/item_0/text = "None Positional"
 popup/item_0/icon = ExtResource("14_jlhtp")
 popup/item_0/id = 2
 popup/item_1/text = "2D Space"
 popup/item_1/icon = ExtResource("12_irt3d")
-popup/item_1/id = 0
+popup/item_1/id = 1
 popup/item_2/text = "3D Space"
 popup/item_2/icon = ExtResource("13_3ar52")
 popup/item_2/id = 1
@@ -880,8 +877,8 @@ icon = ExtResource("5_d12tt")
 [node name="Tree" type="Tree" parent="BoxContainer/SettingsContianer/HSplitContainer/AudioListRect/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
-theme_override_constants/h_separation = 0
 theme_override_constants/v_separation = 0
+theme_override_constants/h_separation = 0
 hide_root = true
 
 [node name="AudioSettingRect" type="ScrollContainer" parent="BoxContainer/SettingsContianer/HSplitContainer"]

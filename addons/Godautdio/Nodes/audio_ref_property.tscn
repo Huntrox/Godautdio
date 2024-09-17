@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://dhg2omrujdjv0"]
 
-[ext_resource type="Texture2D" uid="uid://yps710b0ao6a" path="res://addons/audio_manager/icons/icon_play.svg" id="1_rlcmg"]
-[ext_resource type="Texture2D" uid="uid://bm6bgqchll4ug" path="res://addons/audio_manager/icons/icon_search.svg" id="2_7jc7i"]
+[ext_resource type="Texture2D" uid="uid://yps710b0ao6a" path="res://addons/Godautdio/icons/icon_play.svg" id="1_rlcmg"]
+[ext_resource type="Texture2D" uid="uid://bm6bgqchll4ug" path="res://addons/Godautdio/icons/icon_search.svg" id="2_7jc7i"]
 
 [node name="audio_ref_property" type="BoxContainer"]
 anchors_preset = -1

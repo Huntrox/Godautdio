@@ -4,17 +4,17 @@ class_name GodautdioUtils
 
 const DEBUG:bool = true
 
-static func log(msg):
+static func log(msg)->void:
 	if not DEBUG:
 		return
 	print(msg)
 	
-static func log_err(msg):
+static func log_err(msg)->void:
 	if not DEBUG:
 		return
 	printerr(msg)
 
-static func log_warn(msg):
+static func log_warn(msg)->void:
 	if not DEBUG:
 		return
 	push_warning(msg)

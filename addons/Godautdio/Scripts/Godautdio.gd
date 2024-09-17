@@ -14,19 +14,19 @@ var audio_instance = preload("res://addons/Godautdio/Nodes/audio_instance.tscn")
 var audio_library:AudioLibrary
 
 
-var currently_playing = {}
+var currently_playing:Dictionary = {}
 
 var editor_audio_instance:AudioInstance
 
 
-func _init():
+func _init()->void:
 	if Engine.is_editor_hint():
 		editor_audio_instance = audio_instance.instantiate()
 		add_child(editor_audio_instance)
 	reload_db()
 
 
-func reload_db():
+func reload_db()->void:
 	audio_library = preload("res://addons/Godautdio/Resources/AudioLib.tres")
 	
 #region EDITOR
@@ -122,8 +122,8 @@ func play_one_shot(ref:AudioRef,parent:Node = null,target_position:Vector3 = Vec
 func play_at_location(ref:AudioRef,target_position:Vector3)->RefResult:
 	var result = ref.last_play if ref.last_play else RefResult.new()
 
-	var position_2d = Vector2(target_position.x,target_position.y)
-	var instance = _play_instance(ref,self,true,result)
+	var position_2d:Vector2 = Vector2(target_position.x,target_position.y)
+	var instance:AudioInstance = _play_instance(ref,self,true,result)
 
 	if not result.stream_state == StreamState.NotFound:
 		var space = audio_library.clips_dict[ref.clip_path].clip_space_type
@@ -193,7 +193,7 @@ func erase_ref(ref:AudioRef)->void:
 	if ref and currently_playing.has(ref.instance_id):
 		currently_playing.erase(ref.instance_id)
 
-func clear():
+func clear()->void:
 	stop_all()
 	for clip in currently_playing:
 		currently_playing.erase(clip)
@@ -255,7 +255,7 @@ func set_instance_position(target_position:Vector3,space:AudioClip.ClipSpaceType
 
 
 #region HELPERS
-func _log_current():
+func _log_current()->void:
 	GodautdioUtils.log(currently_playing)
 	
 func _on_finish_setup(clip:AudioClip,free_on_finish:bool,instance:AudioInstance)->void:

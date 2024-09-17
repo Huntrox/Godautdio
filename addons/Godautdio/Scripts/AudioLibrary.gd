@@ -12,6 +12,3 @@ class_name AudioLibrary
 #pull request https://github.com/godotengine/godot/pull/78656
 #proposal https://github.com/godotengine/godot-proposals/issues/56
 @export var clips_dict:Dictionary
-
-
-

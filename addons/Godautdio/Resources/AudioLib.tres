@@ -12,7 +12,6 @@
 [sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_cc5tg"]
 streams_count = 1
 stream_0/stream = ExtResource("1_yo5j2")
-stream_0/weight = 1.0
 
 [sub_resource type="Resource" id="Resource_bwhq3"]
 script = ExtResource("2_6riq0")
@@ -35,7 +34,6 @@ params = SubResource("Resource_bwhq3")
 [sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_7sqkc"]
 streams_count = 1
 stream_0/stream = ExtResource("4_ajske")
-stream_0/weight = 1.0
 
 [sub_resource type="Resource" id="Resource_wnslm"]
 script = ExtResource("2_6riq0")
@@ -58,7 +56,6 @@ params = SubResource("Resource_wnslm")
 [sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_uwiwv"]
 streams_count = 1
 stream_0/stream = ExtResource("5_ryqgs")
-stream_0/weight = 1.0
 
 [sub_resource type="Resource" id="Resource_nnfyi"]
 script = ExtResource("2_6riq0")
@@ -78,35 +75,33 @@ bus_index = 3
 clip_space_type = 0
 params = SubResource("Resource_nnfyi")
 
-[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_3rmkm"]
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_i8ria"]
 streams_count = 1
 stream_0/stream = ExtResource("6_gn633")
-stream_0/weight = 1.0
 
-[sub_resource type="Resource" id="Resource_hfqrs"]
+[sub_resource type="Resource" id="Resource_0adbv"]
 script = ExtResource("2_6riq0")
-looping = false
+looping = true
 volume_db = 0.0
 pitch_scale = 1.0
 delay = 0.0
 max_distance2D = 2000.0
 max_distance3D = 0.0
 
-[sub_resource type="Resource" id="Resource_613tu"]
+[sub_resource type="Resource" id="Resource_jw4jk"]
 script = ExtResource("3_k3d00")
 clip_path = "UI/Music/loop_1"
-clip_stream = SubResource("AudioStreamRandomizer_3rmkm")
+clip_stream = SubResource("AudioStreamRandomizer_i8ria")
 stream_type = 0
 bus_index = 3
 clip_space_type = 0
-params = SubResource("Resource_hfqrs")
+params = SubResource("Resource_0adbv")
 
-[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_r6hq0"]
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_alen5"]
 streams_count = 1
 stream_0/stream = ExtResource("7_sobug")
-stream_0/weight = 1.0
 
-[sub_resource type="Resource" id="Resource_vierm"]
+[sub_resource type="Resource" id="Resource_o135p"]
 script = ExtResource("2_6riq0")
 looping = false
 volume_db = 0.0
@@ -115,23 +110,23 @@ delay = 0.0
 max_distance2D = 2000.0
 max_distance3D = 0.0
 
-[sub_resource type="Resource" id="Resource_dp2v1"]
+[sub_resource type="Resource" id="Resource_oqp5g"]
 script = ExtResource("3_k3d00")
 clip_path = "UI/time_over"
-clip_stream = SubResource("AudioStreamRandomizer_r6hq0")
+clip_stream = SubResource("AudioStreamRandomizer_alen5")
 stream_type = 0
 bus_index = 3
 clip_space_type = 0
-params = SubResource("Resource_vierm")
+params = SubResource("Resource_o135p")
 
 [resource]
 script = ExtResource("5_ufj0o")
-audio_clips = Array[ExtResource("3_k3d00")]([SubResource("Resource_c120e"), SubResource("Resource_f658j"), SubResource("Resource_pacif"), SubResource("Resource_613tu"), SubResource("Resource_dp2v1")])
+audio_clips = Array[ExtResource("3_k3d00")]([SubResource("Resource_c120e"), SubResource("Resource_f658j"), SubResource("Resource_pacif"), SubResource("Resource_jw4jk"), SubResource("Resource_oqp5g")])
 audio_files_format = Array[String](["mp3", "wav", "ogg"])
 clips_dict = {
 "UI/Btn/Click": SubResource("Resource_c120e"),
 "UI/Btn/HoverEnter": SubResource("Resource_f658j"),
 "UI/Btn/HoverExit": SubResource("Resource_pacif"),
-"UI/Music/loop_1": SubResource("Resource_613tu"),
-"UI/time_over": SubResource("Resource_dp2v1")
+"UI/Music/loop_1": SubResource("Resource_jw4jk"),
+"UI/time_over": SubResource("Resource_oqp5g")
 }

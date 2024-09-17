@@ -9,6 +9,7 @@ var current_filter:String = ""
 var current_calback:Callable
 
 var audio_library:AudioLibrary
+
 func show_filter(on_select_callback:Callable,mouse_position:Vector2)->void:
 	search_filter_input.grab_focus() 
 	current_calback = on_select_callback
@@ -17,7 +18,7 @@ func show_filter(on_select_callback:Callable,mouse_position:Vector2)->void:
 	position = mouse_position
 	show()
 
-func _on_search_filter_input_text_changed(new_text)->void:
+func _on_search_filter_input_text_changed(new_text:String)->void:
 	current_filter = new_text
 	refresh_tree()
 

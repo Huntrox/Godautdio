@@ -5,7 +5,7 @@ extends Control
 @onready var vu_meter_bar_right = $VUMeterRightChannel
 
 
-func _process(delta):
+func _process(delta:float) -> void:
 	if Engine.is_editor_hint() and Godautdio.editor_audio_instance.is_playing():
 		vu_meter_bar_left.value = AudioServer.get_bus_peak_volume_left_db(0,0)
 		vu_meter_bar_right.value = AudioServer.get_bus_peak_volume_right_db(0,0)

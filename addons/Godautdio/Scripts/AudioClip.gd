@@ -16,7 +16,7 @@ enum StreamType{Single=0,RandomStream =1}
 
 
 
-func _init():
+func _init() -> void:
 	clip_stream = AudioStreamRandomizer.new()
 	clip_stream.random_volume_offset_db = 0.0
 	clip_stream.random_pitch = 1.0

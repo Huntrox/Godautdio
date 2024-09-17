@@ -14,7 +14,7 @@ var updating = false
 
 var audio_ref:AudioRef
 
-func _init():
+func _init()->void:
 
 	var prop = property_control.instantiate()
 	ply_btn_property_control = prop.find_child("plyBtn") as Button
@@ -34,7 +34,7 @@ func _init():
 
 		
 
-func _ready():
+func _ready()->void:
 	audio_ref = get_edited_object()[get_edited_property()] as AudioRef
 	var audio_lib:AudioLibrary = preload("res://addons/Godautdio/Resources/AudioLib.tres")
 	if audio_ref == null or not audio_lib.clips_dict.has(audio_ref.clip_path):
@@ -43,13 +43,13 @@ func _ready():
 		
 	refresh_control_text()
 	
-func _on_path_input_changed(new_value):
+func _on_path_input_changed(new_value:String) ->void:
 	print(new_value)
 	audio_ref.clip_path = new_value
 	emit_changed(get_edited_property(),audio_ref)
 
 	
-func _on_play_button_pressed():
+func _on_play_button_pressed() ->void:
 	if (updating):
 		return
 	print("PRESSED: " + str(audio_ref.clip_path))
@@ -58,23 +58,23 @@ func _on_play_button_pressed():
 #	emit_changed(get_edited_property(), current_value)
 
 
-func _on_search_button_pressed():
+func _on_search_button_pressed() ->void:
 	if (updating):
 		return
 	audio_picker_menu.show_filter(on_item_selected,get_screen_position())
 	
 
 
-func on_item_selected(value:String):
+func on_item_selected(value:String) ->void:
 	audio_ref.clip_path = value
 	search_btn_property_control.text = value
 	emit_changed(get_edited_property(),audio_ref)
 	
 
-func _update_property():
+func _update_property() ->void:
 	pass
 
-func refresh_control_text():
+func refresh_control_text() ->void:
 	search_btn_property_control.text = audio_ref.clip_path
 
 	

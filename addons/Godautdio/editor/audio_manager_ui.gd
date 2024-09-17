@@ -356,13 +356,13 @@ func _on_delete_btn_pressed()->void:
 	show_confirmation_dialog("Delete","Warning: Deleting items will permanently remove data.\nAre you sure you want to proceed?",_on_element_delete_confirmed)
 	
 
-func _on_element_delete_confirmed():
+func _on_element_delete_confirmed() -> void:
 	clips_dict.erase(selectedClip.clip_path)
 	save(true)
 	refresh_view()
 	preview_clip(AudioClip.new())
 
-func _on_sound_clips_tree_item_mouse_selected(click_position, mouse_button_index):
+func _on_sound_clips_tree_item_mouse_selected(click_position:Vector2, mouse_button_index:int):
 	GodautdioUtils.log("pressed: {0} at {1}".format({"0":mouse_button_index,"1":click_position}))
 	if not mouse_button_index == 2:
 		return
@@ -378,15 +378,15 @@ func _on_sound_clips_tree_item_mouse_selected(click_position, mouse_button_index
 	GodautdioUtils.log(context_menu.position)
 
 
-func _on_ply_btn_pressed():
+func _on_ply_btn_pressed() -> void:
 	Godautdio.editor_clip_preivew(selectedClip)
 
-func _on_stp_btn_pressed():
+func _on_stp_btn_pressed() -> void:
 	Godautdio.stop_editor_preivew()
 
 
 
-func show_confirmation_dialog(title:String , msg:String,callback:Callable):
+func show_confirmation_dialog(title:String , msg:String,callback:Callable) -> void:
 	var mouse_pos = get_global_mouse_position()
 	confirmation_callback = callback
 	confirmation_dialog.title = title
@@ -398,12 +398,12 @@ func show_confirmation_dialog(title:String , msg:String,callback:Callable):
 
 
 
-func _on_clear_all_pressed():
+func _on_clear_all_pressed() -> void:
 	show_confirmation_dialog("CLEAR ALL","Warning: Deleting all items will permanently remove all data.\nAre you sure you want to proceed?",_on_clear_all_confiremd)
 
 
 
-func on_confirmation_confirmed():
+func on_confirmation_confirmed() -> void:
 	if not confirmation_callback:
 		return
 	confirmation_callback.call()
