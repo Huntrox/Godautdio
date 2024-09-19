@@ -18,6 +18,12 @@ var currently_playing:Dictionary = {}
 
 var editor_audio_instance:AudioInstance
 
+var filters:Array[String]:
+	get: 
+		if not audio_library or audio_library.audio_files_format.is_empty():
+			reload_db()
+		return audio_library.audio_files_format
+
 
 func _init()->void:
 	if Engine.is_editor_hint():

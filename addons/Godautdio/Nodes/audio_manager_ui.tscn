@@ -248,7 +248,7 @@ tooltip_text = "Stream mode
 selected = 0
 item_count = 2
 popup/item_0/text = "Single Stream"
-popup/item_1/text = "Random Stream"
+popup/item_1/text = "Multi Stream"
 popup/item_1/id = 1
 
 [node name="clipFieldContainer" type="VBoxContainer" parent="BoxContainer/SoundContainer/AudioSettingRect/MarginContainer/VBoxContainer"]
@@ -296,7 +296,6 @@ text = "Assign"
 icon = ExtResource("5_d12tt")
 icon_alignment = 2
 script = ExtResource("8_taplv")
-filter = Array[String](["mp3", "wave", "ogg"])
 
 [node name="plyBtn" type="Button" parent="BoxContainer/SoundContainer/AudioSettingRect/MarginContainer/VBoxContainer/clipFieldContainer/header/SingleStreamField"]
 layout_mode = 2
@@ -837,7 +836,6 @@ layout_mode = 2
 size_flags_vertical = 10
 
 [node name="flexSpace" type="Control" parent="BoxContainer/SoundContainer/AudioSettingRect/MarginContainer/VBoxContainer/footer"]
-custom_minimum_size = Vector2(128, 0)
 layout_mode = 2
 size_flags_horizontal = 3
 
@@ -914,7 +912,6 @@ initial_position = 2
 size = Vector2i(737, 557)
 ok_button_text = "Open"
 file_mode = 0
-filters = PackedStringArray("*.mp3", "*.wave", "*.ogg")
 
 [node name="contextMenu" type="PopupMenu" parent="."]
 always_on_top = true

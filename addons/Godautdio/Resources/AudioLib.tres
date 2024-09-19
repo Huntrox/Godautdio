@@ -122,7 +122,7 @@ params = SubResource("Resource_o135p")
 [resource]
 script = ExtResource("5_ufj0o")
 audio_clips = Array[ExtResource("3_k3d00")]([SubResource("Resource_c120e"), SubResource("Resource_f658j"), SubResource("Resource_pacif"), SubResource("Resource_jw4jk"), SubResource("Resource_oqp5g")])
-audio_files_format = Array[String](["mp3", "wav", "ogg"])
+audio_files_format = Array[String](["mp3", "wav", "ogg", "tres"])
 clips_dict = {
 "UI/Btn/Click": SubResource("Resource_c120e"),
 "UI/Btn/HoverEnter": SubResource("Resource_f658j"),
@@ -130,3 +130,4 @@ clips_dict = {
 "UI/Music/loop_1": SubResource("Resource_jw4jk"),
 "UI/time_over": SubResource("Resource_oqp5g")
 }
+log = false

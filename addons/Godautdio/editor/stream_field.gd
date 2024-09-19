@@ -6,7 +6,7 @@ class_name StreamField
 
 
 
-var ui_manager
+var ui_manager:GodautdioEditorUI
 @export var stream_index:int
 @export var weight_slider:HSlider
 @export var weight_input:SpinBox
@@ -14,7 +14,7 @@ var ui_manager
 
 var current_stream_path:String
 
-func set_value(stream:AudioStream,weight:float,index:int,manager) ->void:
+func set_value(stream:AudioStream,weight:float,index:int,manager:GodautdioEditorUI) ->void:
 	stream_index = index
 	ui_manager = manager
 	if stream:
@@ -31,6 +31,9 @@ func set_value(stream:AudioStream,weight:float,index:int,manager) ->void:
 
 func on_assign_btn() ->void:
 	if ui_manager:
+		ui_manager.clip_file_open_dailogue.clear_filters()
+		for filter:String in Godautdio.filters:
+			ui_manager.clip_file_open_dailogue.add_filter("*."+filter)
 		ui_manager.clip_file_open_dailogue.file_selected.connect(_try_set_stream)
 		ui_manager.clip_file_open_dailogue.popup()
 		await ui_manager.clip_file_open_dailogue.file_selected
@@ -54,9 +57,8 @@ func set_stream(path:String) ->void:
 	
 
 func on_drop_file(file:String) ->void:
-	if ui_manager:
-		ui_manager.on_stream_file_dropped(stream_index,file)
-	set_stream(file)
+	if ui_manager and ui_manager.on_stream_file_dropped(stream_index,file):
+		set_stream(file)
 
 func on_preview_stream() ->void:
 	if ui_manager:

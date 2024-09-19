@@ -33,7 +33,6 @@ Drop stream file to assign new stream."
 editable = false
 right_icon = ExtResource("2_mqqsk")
 script = ExtResource("4_y74ps")
-filter = Array[String](["mp3", "wave", "ogg"])
 
 [node name="openFileButton" type="Button" parent="VBoxContainer/HFlowContainer"]
 layout_mode = 2
@@ -42,7 +41,6 @@ text = "Assign"
 icon = ExtResource("3_pbq54")
 icon_alignment = 2
 script = ExtResource("4_y74ps")
-filter = Array[String](["mp3", "wave", "ogg"])
 
 [node name="plyBtn" type="Button" parent="VBoxContainer/HFlowContainer"]
 layout_mode = 2

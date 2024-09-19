@@ -1,6 +1,6 @@
 @tool
 extends Control
-#class_name AudioManagerUI
+class_name GodautdioEditorUI
 
 
 #Resources
@@ -177,8 +177,11 @@ func on_multi_file_dropped(file:String)->void:
 	
 
 
-func on_stream_file_dropped(index:int , file:String)->void:
+func on_stream_file_dropped(index:int , file:String) -> bool:
 	var stream_file = load(file)
+	if stream_file is not AudioStream:
+		GodautdioUtils.log_warn("File Must be AudioStream")
+		return false
 	if stream_file:
 		if selectedClip.stream_type == AudioClip.StreamType.Single:
 			selectedClip.clip_stream.set_stream(0,stream_file)
@@ -187,8 +190,9 @@ func on_stream_file_dropped(index:int , file:String)->void:
 				selectedClip.clip_stream.add_stream(index,stream_file)
 			else:
 				selectedClip.clip_stream.set_stream(index,stream_file)
-
-func on_stream_preview(index:int)->void:
+		return true
+	return false
+func on_stream_preview(index:int) -> void:
 	if selectedClip.clip_stream.streams_count < index or not selectedClip.clip_stream.get_stream(index):
 		return
 	Godautdio.editor_stream_preivew(selectedClip.clip_stream.get_stream(index))
