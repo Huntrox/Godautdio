@@ -98,6 +98,11 @@ func play_by_path(path:String,parent:Node = null)-> RefResult:
 #	return result
 
 #TODO: add play at specified position on the clip  should be 0.0 to 1.0 ratio. 0.5 means halfway 
+#TODO: wait for AudioStreamRandomizer get_length or current selected stream implementation
+#PR https://github.com/godotengine/godot/pull/88437
+#https://github.com/godotengine/godot/compare/master...avanwinkle:godot:audiorandomizer-last-stream
+#https://github.com/missionpinball/mpf-gmc/issues/7
+
 
 #func play_at(ref:AudioRef,position:float)->RefResult:
 #	var result = RefResult.new()
@@ -262,8 +267,8 @@ func set_instance_position(target_position:Vector3,space:AudioClip.ClipSpaceType
 
 #region HELPERS
 func _log_current()->void:
-	GodautdioUtils.log(currently_playing)
-	
+	#GodautdioUtils.log(currently_playing)
+	pass
 func _on_finish_setup(clip:AudioClip,free_on_finish:bool,instance:AudioInstance)->void:
 	#infinite looping
 	var is_loop_play:bool = false
@@ -280,6 +285,7 @@ func _on_finish_setup(clip:AudioClip,free_on_finish:bool,instance:AudioInstance)
 			await get_tree().create_timer(delay).timeout
 		print(delay)
 		instance.play()
+#		.clip_length = instance.stream.get_length()
 		return
 	if free_on_finish :
 		on_instance_finish(instance)
@@ -369,3 +375,10 @@ class RefResult:
 	func stop()->RefResult:
 		Godautdio.stop_ref(instance_id)
 		return self
+		
+	#this currently return the first steam length which is fine for single stream mode
+	#currently there is no way of getting the current selected stream on AudioStreamRandomizer 
+	#TODO:
+	func get_length() -> float:
+		var player:AudioStreamPlayer = audio_instance as AudioStreamPlayer
+		return player.stream.get_stream(0).get_length()

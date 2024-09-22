@@ -21,7 +21,7 @@ func _on_pressed_() -> void:
 
 func play_audio_by_path() -> void:
 	var res:Godautdio.RefResult = Godautdio.play_by_path(clip_path)
-
+	GodautdioUtils.log(res.get_length())
 	
 
 func play_audio_clip() -> void:
