@@ -80,8 +80,7 @@ func stop_editor_preivew()->void:
 
 func play_by_path(path:String,parent:Node = null)-> RefResult:
 	var result = RefResult.new()
-	var ref = AudioRef.new()
-	ref.clip_path = path
+	var ref = AudioRef.create(path)
 	_play_instance(ref,parent,true,result)
 	return result
 	
@@ -192,6 +191,12 @@ func stop_ref(instance:String)->void:
 func stop_all()->void:
 	for clip in currently_playing:
 		stop(currently_playing[clip][AUDIO_REFERENCE])
+		
+func stop_all_clips_of_path(ref:AudioRef)->void:
+	for clip in currently_playing:
+		if currently_playing[clip][CURRENT_CLIP_ID] == ref.clip_path:
+			stop(currently_playing[clip][AUDIO_REFERENCE])
+
 
 func is_playing(ref:AudioRef)->bool:
 	if not ref or ref.instance_id.is_empty():
@@ -231,6 +236,7 @@ func schedule_clip(clip_path:String,result:RefResult)->void:
 	result.stream_state = StreamState.Playing
 	await instance.finished
 	result.stream_state = StreamState.Finished
+	result.on_finish.emit()
 	
 
 
@@ -280,10 +286,11 @@ func _on_finish_setup(clip:AudioClip,free_on_finish:bool,instance:AudioInstance)
 		is_loop_play = true
 		
 	if is_loop_play:
+		var ref:AudioRef = currently_playing[instance.instance_id][AUDIO_REFERENCE]
+		ref.last_play.on_loop_finishied.emit(currently_playing[instance.instance_id][CLIP_LOOPS])
 		var delay = currently_playing[instance.instance_id][CLIP_DELAY]
 		if delay > 0:
 			await get_tree().create_timer(delay).timeout
-		print(delay)
 		instance.play()
 #		.clip_length = instance.stream.get_length()
 		return
@@ -358,12 +365,20 @@ func setup_audio_instance(clip:AudioClip,instance:AudioInstance)->AudioInstance:
 	return instance
 
 
+func path_exists(clip_path:String)->bool:
+	return audio_library.clips_dict.has(clip_path)
+
+
 #endregion 
 enum StreamState {Queued,Puased,Playing,Finished,Stopped,NotFound}
 class RefResult:
 	var audio_instance:Node
 	@export var instance_id:String
 	@export var stream_state:StreamState
+	#TODO add signals (on_finish,on_stopped,on_canceled, on_loop_finishied(current_loop:int))
+	signal on_finish()
+	signal on_loop_finishied(current_loop:int)
+	
 	
 	func set_loops(loops:int)->RefResult:
 		Godautdio.set_clip_loops(instance_id,loops)

@@ -22,16 +22,22 @@ func _on_pressed_() -> void:
 func play_audio_by_path() -> void:
 	var res:Godautdio.RefResult = Godautdio.play_by_path(clip_path)
 	GodautdioUtils.log(res.get_length())
+	await res.on_finish
+	print("FINISHED")
 	
 
 func play_audio_clip() -> void:
-	audio_clip.play().set_loops(clip_loops).set_delay(clip_delay)
+	audio_clip.play().set_loops(clip_loops)\
+	.set_delay(clip_delay).on_loop_finishied.connect(on_clip_loop)
 
 func stop_audio_clip() -> void:
 	audio_clip.stop()
 	
 	
 	
+
+func on_clip_loop(loop:int)->void:
+	print(loop)
 
 
 func _on_line_edit_text_changed(new_text:String) -> void:
