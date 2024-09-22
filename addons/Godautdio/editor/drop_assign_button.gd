@@ -4,7 +4,7 @@ extends Control
 @export var multiple_files:bool = false
 
 signal on_file_dropped(file)
-
+signal on_field_clicked()
 
 func _drop_data(position: Vector2, data) -> void:
 	if multiple_files:
@@ -39,7 +39,11 @@ func is_allowed_type(file_path:String,filter:Array[String])->bool:
 	if file is AudioStream and filter.has(file_path.get_extension()):
 		return true
 	return false
-
+	
+func _gui_input(event):
+	if event is InputEventMouseButton:
+		if event.button_index == MOUSE_BUTTON_LEFT and event.pressed:
+			on_field_clicked.emit()
 
 #func _get_drag_data(position:Vector2)->Variant:
 	#return 

@@ -82,7 +82,7 @@ stream_0/stream = ExtResource("6_gn633")
 [sub_resource type="Resource" id="Resource_0adbv"]
 script = ExtResource("2_6riq0")
 looping = true
-volume_db = 0.0
+volume_db = -4.0
 pitch_scale = 1.0
 delay = 0.0
 max_distance2D = 2000.0
@@ -97,37 +97,37 @@ bus_index = 3
 clip_space_type = 0
 params = SubResource("Resource_0adbv")
 
-[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_alen5"]
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_6e6x5"]
 streams_count = 1
 stream_0/stream = ExtResource("7_sobug")
 
-[sub_resource type="Resource" id="Resource_o135p"]
+[sub_resource type="Resource" id="Resource_l04me"]
 script = ExtResource("2_6riq0")
 looping = false
-volume_db = 0.0
+volume_db = -17.0
 pitch_scale = 1.0
 delay = 0.0
 max_distance2D = 2000.0
 max_distance3D = 0.0
 
-[sub_resource type="Resource" id="Resource_oqp5g"]
+[sub_resource type="Resource" id="Resource_vmyo0"]
 script = ExtResource("3_k3d00")
 clip_path = "UI/time_over"
-clip_stream = SubResource("AudioStreamRandomizer_alen5")
+clip_stream = SubResource("AudioStreamRandomizer_6e6x5")
 stream_type = 0
 bus_index = 3
 clip_space_type = 0
-params = SubResource("Resource_o135p")
+params = SubResource("Resource_l04me")
 
 [resource]
 script = ExtResource("5_ufj0o")
-audio_clips = Array[ExtResource("3_k3d00")]([SubResource("Resource_c120e"), SubResource("Resource_f658j"), SubResource("Resource_pacif"), SubResource("Resource_jw4jk"), SubResource("Resource_oqp5g")])
+audio_clips = Array[ExtResource("3_k3d00")]([SubResource("Resource_c120e"), SubResource("Resource_f658j"), SubResource("Resource_pacif"), SubResource("Resource_jw4jk"), SubResource("Resource_vmyo0")])
 audio_files_format = Array[String](["mp3", "wav", "ogg", "tres"])
 clips_dict = {
 "UI/Btn/Click": SubResource("Resource_c120e"),
 "UI/Btn/HoverEnter": SubResource("Resource_f658j"),
 "UI/Btn/HoverExit": SubResource("Resource_pacif"),
 "UI/Music/loop_1": SubResource("Resource_jw4jk"),
-"UI/time_over": SubResource("Resource_oqp5g")
+"UI/time_over": SubResource("Resource_vmyo0")
 }
 log = false

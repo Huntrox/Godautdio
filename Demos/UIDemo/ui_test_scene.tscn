@@ -1,10 +1,11 @@
-[gd_scene load_steps=16 format=3 uid="uid://cddmbporhylbu"]
+[gd_scene load_steps=17 format=3 uid="uid://cddmbporhylbu"]
 
 [ext_resource type="Script" path="res://Demos/UIDemo/godautdio_ui_example.gd" id="1_dpaa5"]
 [ext_resource type="Script" path="res://addons/Godautdio/Scripts/AudioRef.gd" id="2_ivfgu"]
 [ext_resource type="Texture2D" uid="uid://d04vr5lu0suv3" path="res://Demos/UIDemo/ui_code_exm_1.png" id="3_15jpg"]
 [ext_resource type="Script" path="res://Demos/UIDemo/extended_button.gd" id="3_bx5o7"]
 [ext_resource type="Texture2D" uid="uid://cbircg1rx7b4m" path="res://Demos/UIDemo/ui_code_exm_2.png" id="4_62swo"]
+[ext_resource type="AudioStream" uid="uid://ct5wt0sb0f76n" path="res://Demos/test_audio_stream_res.tres" id="6_32lq7"]
 
 [sub_resource type="Resource" id="Resource_lry10"]
 script = ExtResource("2_ivfgu")
@@ -564,6 +565,7 @@ text = "UI/time_over"
 alignment = 1
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("6_32lq7")
 
 [connection signal="mouse_entered" from="justBtn" to="justBtn" method="_on_mouse_entered"]
 [connection signal="mouse_exited" from="justBtn" to="justBtn" method="_on_mouse_exited"]

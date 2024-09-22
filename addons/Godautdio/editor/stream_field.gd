@@ -86,3 +86,8 @@ func on_weight_slider_changed(value:float) ->void:
 func on_weight_value_changed(value:float) ->void:
 	if ui_manager:
 		ui_manager.on_stream_weight_changed(stream_index,value)
+		
+func show_in_file_system()->void:
+	if current_stream_path.is_empty():
+		return 
+	EditorInterface.get_file_system_dock().navigate_to_path(current_stream_path)

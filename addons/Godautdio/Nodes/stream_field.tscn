@@ -30,6 +30,7 @@ size_flags_horizontal = 3
 tooltip_text = "The AudioStream resource to be played.
 
 Drop stream file to assign new stream."
+mouse_default_cursor_shape = 2
 editable = false
 right_icon = ExtResource("2_mqqsk")
 script = ExtResource("4_y74ps")
@@ -91,6 +92,7 @@ layout_mode = 2
 layout_mode = 2
 size_flags_horizontal = 8
 
+[connection signal="on_field_clicked" from="VBoxContainer/HFlowContainer/clipFilePathLineEdit" to="." method="show_in_file_system"]
 [connection signal="on_file_dropped" from="VBoxContainer/HFlowContainer/clipFilePathLineEdit" to="." method="on_drop_file"]
 [connection signal="on_file_dropped" from="VBoxContainer/HFlowContainer/openFileButton" to="." method="on_drop_file"]
 [connection signal="pressed" from="VBoxContainer/HFlowContainer/openFileButton" to="." method="on_assign_btn"]
