@@ -367,19 +367,22 @@ func _on_element_delete_confirmed() -> void:
 	preview_clip(AudioClip.new())
 
 func _on_sound_clips_tree_item_mouse_selected(click_position:Vector2, mouse_button_index:int):
-	GodautdioUtils.log("pressed: {0} at {1}".format({"0":mouse_button_index,"1":click_position}))
+	#TODO Check if its group tag or item, cancel if its group
 	if not mouse_button_index == 2:
 		return
+		
 	
+	context_menu.hide()
 	context_menu.clear()
-	context_menu.add_item("YES")
+	context_menu.add_item("Duplicate",0)
+	#context_menu.add_item("Copy Params",1)
 	context_menu.add_separator()
-	context_menu.add_item("Delete")
+	context_menu.add_item("Delete",10,KEY_DELETE)
+
 	context_menu.reset_size()
-	context_menu.position = get_global_mouse_position()
+	context_menu.position = get_screen_transform() * click_position
 	context_menu.show()
-#	context_menu.reparent(context_menu.get_parent().get_tree().root)
-	GodautdioUtils.log(context_menu.position)
+	
 
 
 func _on_ply_btn_pressed() -> void:
@@ -422,3 +425,15 @@ func _on_clear_all_confiremd():
 	refresh_view()
 	preview_clip(AudioClip.new())
 	
+
+
+func _on_context_menu_id_pressed(id: int) -> void:
+	var selected = sounds_tree.get_selected()
+	var meta = selected.get_metadata(0)
+	
+	match id:
+		0:
+			selectedClip.clip_path +="_dup"
+			_on_save_btn_pressed()
+		10:
+			_on_delete_btn_pressed()

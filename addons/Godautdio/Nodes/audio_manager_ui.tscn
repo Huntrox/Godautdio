@@ -915,7 +915,6 @@ ok_button_text = "Open"
 file_mode = 0
 
 [node name="contextMenu" type="PopupMenu" parent="."]
-always_on_top = true
 
 [node name="warningPopup" type="AcceptDialog" parent="."]
 title = "Warning!"
@@ -942,4 +941,5 @@ initial_position = 2
 [connection signal="on_file_dropped" from="BoxContainer/SoundContainer/AudioSettingRect/MarginContainer/VBoxContainer/clipFieldContainer/StreamsArrayContainer/StreamsScrollContainer/PanelContainer/MarginContainer/StreamsGridContainer" to="." method="on_multi_file_dropped"]
 [connection signal="on_file_dropped" from="BoxContainer/SoundContainer/AudioSettingRect/MarginContainer/VBoxContainer/clipFieldContainer/StreamsArrayContainer/AddStreamBtn" to="." method="on_multi_file_dropped"]
 [connection signal="pressed" from="BoxContainer/SoundContainer/AudioSettingRect/MarginContainer/VBoxContainer/clipFieldContainer/StreamsArrayContainer/AddStreamBtn" to="." method="on_add_stream_element"]
+[connection signal="id_pressed" from="contextMenu" to="." method="_on_context_menu_id_pressed"]
 [connection signal="confirmed" from="ConfirmationDialog" to="." method="on_confirmation_confirmed"]
