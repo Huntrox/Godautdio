@@ -4,6 +4,8 @@ Godautdio is a simple audio management plugin for the Godot game engine, designe
 ![Godautdio plugin running Godot 4.x](./images/godautdio_ui.png)
 ![](./images/randomized_stream.png)
 
+## Requirements
+- Godot 4.0 or later
 
 ## Installation
 
@@ -55,12 +57,12 @@ The `AudioRef` class is a container to hold reference to audio sound on Godautdi
   - Remove the reference from the Godautdio audio manager, stopping its playback.
 
 
-### Signals (To be implemented)
+### Signals
 
 - `on_finish`: Signal emitted when the audio reference finishes playing.
-- `on_stopped`: Signal emitted when playback of the audio reference is manually stopped.
-- `on_canceled`: Signal emitted when playback of the audio reference is canceled.
 - `on_loop_finished(current_loop: int)`: Signal emitted when a loop of the audio reference finishes playing. The `current_loop` parameter indicates which loop just finished.
+- ~`on_stopped`: Signal emitted when playback of the audio reference is manually stopped.~
+- ~`on_canceled`: Signal emitted when playback of the audio reference is canceled.~
 
 ### Usage
 
